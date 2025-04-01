@@ -1,6 +1,14 @@
 name: Demo project
 on: [push, workflow_dispatch] 
 jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print repository name and commit message
+        run: |
+          echo "::notice title=Repository Info::Repository: ${{ github.repository }}"
+          echo "::notice title=Commit Message::Message: ${{ github.event.head_commit.message }}"
+
   test:
     runs-on: ubuntu-latest
     steps:
